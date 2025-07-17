@@ -1,18 +1,20 @@
-import { useContext, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
-import Animefetch from '../Context.js/Hianimecontext.js/context'
+import { useDispatch } from 'react-redux'
+import { setInfoid, setModalState } from '../Redux/StateSlice'
 
 export default function AnimeCard(props) {
-    const context = useContext(Animefetch)
-    const { setmodalstate, setinfoid } = context
-    const { name, img, id, loading, eps} = props
+    const { name, img, id, loading, eps } = props
+
     const element = useRef(null)
     const location = useLocation();
+    const dispatch = useDispatch()
 
     const page = location.pathname.split('/')
     const showinfo = () => {
-        setmodalstate(true)
-        setinfoid(id)
+        // setmodalstate(true)
+        dispatch(setModalState(true))
+        dispatch(setInfoid(id))
     }
 
     const handleMouseOverElement = (e) => {

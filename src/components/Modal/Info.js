@@ -1,12 +1,11 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import useFavorites from "../../Hooks/useFavorites"
-import { useAnimeinfoQuery } from "../../Redux/Fetchslice"
-import Animefetch from "../../Context.js/Hianimecontext.js/context"
 import { Link } from "react-router-dom";
+import { setInfoid, setKeyword, setModalState } from "../../Redux/StateSlice";
+import { useDispatch } from "react-redux";
 
 export default function Info({aniinfo ,id}) {
-    const context = useContext(Animefetch);
-    const { setkeyword, setmodalstate, setinfoid, Source } = context
+    const dispatch = useDispatch()
     const [Favorite, setFavorite] = useState("regular")
     const [epid, setepid] = useState('')
 
@@ -44,7 +43,7 @@ export default function Info({aniinfo ,id}) {
                 </div>
 
                 <div className="Info">
-                    <p onClick={() => { setkeyword(aniinfo.title ); setmodalstate(false) }}>{title}</p>
+                    <p onClick={() => { dispatch(setKeyword(aniinfo.title));  dispatch(setModalState(false)) }}>{title}</p>
 
                     <div id="ep-info">
                         <span id="s">{Status === "Finished Airing" ? <i class="fa-solid fa-check"></i> : <i class="fa-solid fa-clock"></i>}{Status === "Finished Airing" ? "Completed" : "Ongoing"}</span>
@@ -74,7 +73,7 @@ export default function Info({aniinfo ,id}) {
 
             {aniinfo?.seasons && <div className="Seasonsli">
                 {aniinfo?.seasons.map((season) => (
-                    <div className="season" onClick={() => { setinfoid(season.id) }}>
+                    <div className="season" onClick={() => { dispatch(setInfoid(season.id)) }}>
                         <img className={`season-img ${aniinfo.title === season.title ? "selectedimg" : ""}`} src={season.season_poster || season.poster} />
                         <span className={`season-tag ${aniinfo.title === season.title ? "selectedseas" : ""}`}>{season.title || season.name}</span>
                     </div>

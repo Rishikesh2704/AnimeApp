@@ -1,13 +1,13 @@
-import { useContext, useEffect, useState } from "react";
-import Animefetch from "../../Context.js/Hianimecontext.js/context";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, } from "react-router-dom";
 import { useAnimeinfoQuery } from "../../Redux/Fetchslice";
+import { useDispatch } from "react-redux";
+import { setInfoid, setKeyword } from "../../Redux/StateSlice";
 
 
 
 export default function AnimeInfo({id}) {
-    const context = useContext(Animefetch);
-    const {setkeyword,setinfoid} = context;
+    const dispatch = useDispatch()
     const [aniinfo, setaniinfo] = useState(null);
     const [seasons ,setseasons] = useState(null)
     const navigate = useNavigate();
@@ -30,7 +30,7 @@ export default function AnimeInfo({id}) {
             {seasons? <div className='ESeasonsDiv'>
                 {seasons && <div className="ESeasonsli">
                 {seasons.map((season) => (
-                    <div className="season" onClick={() => { setinfoid(season.id) 
+                    <div className="season" onClick={() => { dispatch(setInfoid(season.id)) 
                     navigate(`/stream/${season.id}`)
                     }}>
                     <img className={`season-img ${aniinfo.title === season.title ? "selectedimg" : ""}`} src={season.season_poster || season.poster} />
@@ -51,7 +51,7 @@ export default function AnimeInfo({id}) {
 
                     <div className="EWatch-desc">
 
-                        <span onClick={() => { setkeyword(title); }}>{title}</span>
+                        <span onClick={() => { dispatch(setKeyword(title)); }}>{title}</span>
 
                         <div id="streamep-info">
                             <span id="es1">{tvInfo.rating}</span>

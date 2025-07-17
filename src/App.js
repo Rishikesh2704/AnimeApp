@@ -29,10 +29,8 @@ function App() {
       element: <>
         <Navbar />
         <Suspense fallback={<LoadingPage />}>
-          <SignedIn>
             <FavoritePage />
-          </SignedIn>
-        </Suspense>
+          </Suspense>
       </>
     },
 

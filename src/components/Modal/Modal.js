@@ -1,18 +1,16 @@
-import { useState,useContext,useEffect, useRef} from 'react'
-import {json, Link} from 'react-router-dom'
-import Animefetch from '../../Context.js/Hianimecontext.js/context';
-import {useAnimeinfoQuery,useEplistQuery} from '../../Redux/Fetchslice';
-import useFavorites from '../../Hooks/useFavorites'
+import { useState, useEffect, useRef} from 'react'
+import { useAnimeinfoQuery, useEplistQuery } from '../../Redux/Fetchslice';
 import EpisodeList from './EpisodeList';
 import Info from './Info';
+import { useDispatch, useSelector } from 'react-redux';
+import { setModalState } from '../../Redux/StateSlice';
 
 export default function Modal(props) {
    const { id } = props
-   const context = useContext(Animefetch);
-   const {setmodalstate ,infoid,setinfoid,setkeyword ,Source} = context;
-   const [seasons, setseasons] = useState(null);
    const [Favorite,setFavorite] = useState("regular")
+   const {infoid} = useSelector(id => id.states.infoid)
    
+   const dispatch = useDispatch();
    const modalBox = useRef(null);
    
     const { data: aniinfo, isLoading, error } = useAnimeinfoQuery(id)
@@ -55,7 +53,7 @@ export default function Modal(props) {
          ]
 
          modalBox.current.animate(animation,{duration:200,timing:"linear"})
-         setTimeout(()=>{setmodalstate(false)},190)
+         setTimeout(()=>{dispatch(setModalState(false))},190)
       }
    }
 

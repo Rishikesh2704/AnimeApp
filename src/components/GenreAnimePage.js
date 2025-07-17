@@ -1,16 +1,13 @@
-import { useContext, useState, useEffect } from 'react'
-import Animefetch from '../Context.js/Hianimecontext.js/context';
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Modal from './Modal/Modal';
 import { useGenreAnimeInfiniteQuery } from '../Redux/Fetchslice';
 import ListLayout from './ListLayout';
+import { useSelector } from 'react-redux';
 
 export default function GenreAnimePage() {
-    const context = useContext(Animefetch);
-    const { Animegenrelist, modalstate, infoid } = context;
+    const {  modalState, infoid } = useSelector(state => state.states)
     const [Genre, setGenre] = useState([])
-    const [currpage, setcurrpage] = useState(1)
     const location = useLocation()
     const body = document.getElementsByTagName('body')[0]
 
@@ -77,7 +74,7 @@ export default function GenreAnimePage() {
     return (
         <>
             <ListLayout Animes={Genre} heading={currgen} />
-            {modalstate &&<Modal id={infoid}/>}
+            { modalState &&<Modal id={infoid}/>}
         </>
     )
 }

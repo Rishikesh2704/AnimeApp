@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
-import { useEplistQuery } from "../../Redux/Fetchslice";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import Animefetch from "../../Context.js/Hianimecontext.js/context";
+import { useDispatch } from "react-redux";
+import { setModalState } from "../../Redux/StateSlice";
 
 export default function EpisodeList({ eplist }) {
-    const context = useContext(Animefetch)
-    const { setmodalstate } = context
+   
+    const dispatch = useDispatch()
     const [rangeindex, setrangeindex] = useState(0)
 
     const groupedep = (episodelist) => {
@@ -44,7 +44,7 @@ export default function EpisodeList({ eplist }) {
                         <div className="Ep-grid">
                             {groupep[rangeindex]?.map((ep) =>
                             (
-                                <p ><Link to={`/stream/${ep.id}`} id="epstream-ep" onClick={() => setmodalstate(false)}>{ep.episode_no}</Link></p>
+                                <p ><Link to={`/stream/${ep.id}`} id="epstream-ep" onClick={() => dispatch(setModalState    (false))}>{ep.episode_no}</Link></p>
                             ))}
                         </div>
 

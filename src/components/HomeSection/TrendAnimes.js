@@ -1,11 +1,11 @@
 import { memo, useContext, useRef } from 'react'
-import Animefetch from '../../Context.js/Hianimecontext.js/context';
+import { useDispatch } from 'react-redux';
+import { setInfoid, setModalState } from '../../Redux/StateSlice';
 
 
 const TrendAnimes = memo((props) => {
     const { animes } = props
-    const context = useContext(Animefetch)
-    const { setmodalstate, setinfoid } = context
+    const dispatch = useDispatch()
     const element = useRef(null);
     const trendContent = useRef(null);
     const trendContainer = useRef(null);
@@ -41,13 +41,12 @@ const TrendAnimes = memo((props) => {
         img.style.setProperty('--transformcover', '1')
         img.style.setProperty('--tanslateX', "0rem")
         img.style.setProperty('--tanslateY', "0rem")
-        // animeContainer.style.animationPlayState = "running"
     }
 
     const showinfo = (id) => {
-        setmodalstate(true)
+        dispatch(setModalState(true))
         let modal = document.getElementsByClassName('Modal-contentbox')
-        setinfoid(id)
+        dispatch(setInfoid(id))
     }
 
     let slide = 0

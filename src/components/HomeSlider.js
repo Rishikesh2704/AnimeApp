@@ -1,11 +1,11 @@
-import { useCallback, useContext, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useAnimeinfoQuery } from '../Redux/Fetchslice'
 import Navbar from "./Navbar";
-import Animefetch from "../Context.js/Hianimecontext.js/context";
+import { useDispatch } from "react-redux";
+import { setInfoid, setModalState } from "../Redux/StateSlice";
 
 export default function HomeSlider({ spotlightCoverAnimes }) {
-  const context = useContext(Animefetch);
-  const { setmodalstate, setinfoid } = context
+  const dispatch = useDispatch()
   const [animeimg, setanimeimg] = useState([])
   const [currentindx, setcurrentindx] = useState(0)
   const grid = useRef(null)
@@ -38,8 +38,10 @@ export default function HomeSlider({ spotlightCoverAnimes }) {
   }
 
   const handleModal = (spotlightId) => {
-    setinfoid(spotlightId)
-    setmodalstate(true)
+    dispatch(setInfoid(spotlightId))
+    dispatch(setModalState(true));
+    // setinfoid(spotlightId)
+    // setmodalstate(true)
   }
 
   return (

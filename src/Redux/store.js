@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { Animeapi } from "./Fetchslice";
 import { setupListeners } from "@reduxjs/toolkit/query";
+import stateSliceReducer from "./StateSlice";
 export const store = configureStore({
     reducer:{
-       [Animeapi.reducerPath]: Animeapi.reducer
+       [Animeapi.reducerPath]: Animeapi.reducer,
+       states:stateSliceReducer
     },
 
     middleware:(getDefaultMiddleware)=>

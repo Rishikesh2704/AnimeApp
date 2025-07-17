@@ -1,19 +1,17 @@
-import { React, useContext, useState, useEffect } from 'react'
-import Animefetch from '../Context.js/Hianimecontext.js/context';
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Modal from './Modal/Modal'
 import { useAnimesearchInfiniteQuery } from '../Redux/Fetchslice';
 import ListLayout from './ListLayout';
+import { useSelector } from 'react-redux';
 
 export default function SearchPage() {
-    const context = useContext(Animefetch);
-    const { keyword, Animesearch, modalstate, infoid } = context;
+    const { keyword, modalState, infoid } = useSelector(state => state.states)
     const [Search, setSearch] = useState([])
-    const [currpage, setcurrpage] = useState(1)
     const location = useLocation()
     const body = document.getElementsByTagName('body')[0]
     const navigate = useNavigate()
+
     let name = location.pathname.split("/")
     let currgen
     name[1] = location.pathname.slice(1)
@@ -28,21 +26,6 @@ export default function SearchPage() {
         }
     }
 
-
-    // FETCHING SEARCH ANIMES //
-    const { data: Searchre, isLoading: Searchloading, error: searcherror, fetchNextPage: fetchSearchNextPage } = useInfiniteQuery({
-        queryKey: ['SearchResults', keyword, name[1]],
-        queryFn: ( pageParam ) => Animesearch(keyword, pageParam), enabled: name[1] === "Search",
-        initialPageParam: 1,
-        getNextPageParam: (lastpage) => {
-            if (lastpage?.data?.hasNextPage) {
-                return lastpage?.data?.currentPage + 1
-            }
-            else return undefined
-        }
-    })
-
-
     // SETTING SEARCH ANIMES STATE //
     useEffect(() => {
         
@@ -52,7 +35,6 @@ export default function SearchPage() {
         }
         return () => { setSearch([]) }
     }, [isLoading, data, keyword])
-
 
     // INFINITE SCROLL //
     useEffect(() => {
@@ -67,7 +49,6 @@ export default function SearchPage() {
             window.removeEventListener("scroll", scrollFunction)
         }
     }, [keyword])
-
 
     // LOADING COVERS //
     useEffect(() => {
@@ -86,7 +67,7 @@ export default function SearchPage() {
     return (
         <> 
             <ListLayout Animes={Search} heading="Search Results" />
-            {modalstate &&<Modal id={infoid}/>}
+            {modalState &&<Modal id={infoid}/>}
         </>
     )
 }

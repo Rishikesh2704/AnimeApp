@@ -1,10 +1,8 @@
-import { useContext } from "react"
-import Animefetch from "../Context.js/Hianimecontext.js/context"
 import Modal from "../components/Modal/Modal"
 import AnimeCard from "./AnimeCard"
+import { useSelector } from "react-redux"
 export default function FavoritePage(){
-    const context = useContext(Animefetch)
-    const{infoid,modalstate} = context
+    const{ infoid, modalstate } = useSelector(state => state.states)
     const  animesli = JSON.parse(localStorage.getItem("Favorites")) || null
     
     return(

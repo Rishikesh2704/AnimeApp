@@ -1,7 +1,6 @@
-import { useContext,useState } from 'react'
+import { useEffect,useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Modal from '../Modal/Modal'
-import Animefetch from '../../Context.js/Hianimecontext.js/context'
 import { useHomeQuery } from '../../Redux/Fetchslice'
 import { useRef } from 'react'
 import TopAnimesSection from './TopAnimesSection'
@@ -9,12 +8,12 @@ import TrendAnimes from './TrendAnimes'
 import SpotLightSection from './SpotLightSection'
 import OtherSection from './OtherSection'
 import LoadingPage from '../LoadingPage'
+import { useSelector } from 'react-redux'
 
 export default function Home() {
    const location = useLocation()
-   const context = useContext(Animefetch)
-   const { modalstate, infoid } = context
    const homeRef = useRef(null);
+   const {modalState,infoid} = useSelector(st => st.states)
    
    let name = location.pathname.split("/")
    let currgen
@@ -50,9 +49,10 @@ export default function Home() {
          {!Reduxloading&&(isHome)&&Object.entries(ReduxHome).map(([key,value]) => {
             if (key==="spotlights") return(<SpotLightSection key={key} spotlightCoverAnimes={value}/>)
          })}
-            
+
          {!Reduxloading
             ?
+            
                <div className='Home' ref={homeRef} >
                   {isHome && Object.entries(ReduxHome).map(([key,value]) => {
 
@@ -68,7 +68,7 @@ export default function Home() {
             <LoadingPage/>
          }
 
-         {modalstate &&<Modal id={infoid}/>}
+         {modalState&&<Modal id={infoid}/>}
       </>
    )
 }

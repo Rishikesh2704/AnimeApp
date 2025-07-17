@@ -1,16 +1,16 @@
-import { React, useState, useContext, memo } from 'react'
-import Animefetch from '../../Context.js/Hianimecontext.js/context'
+import { useState, memo } from 'react'
+import { useDispatch } from 'react-redux'
+import { setInfoid, setModalState } from '../../Redux/StateSlice'
 
 const TopAnimesSection = memo((props) => {
-   const context = useContext(Animefetch)
-   const { setmodalstate, setinfoid, } = context
+   const dispatch = useDispatch();
    const { animes, heading, } = props
    const [ani, setani] = useState('today')
 
    const showinfo = (id) => {
-      setmodalstate(true)
+      dispatch(setModalState(true))
       let modal = document.getElementsByClassName('Modal-contentbox')
-      setinfoid(id)
+      dispatch(setInfoid(id))
    }
 
    return (<>

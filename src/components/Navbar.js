@@ -1,15 +1,16 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Animefetch from "../Context.js/Hianimecontext.js/context";
 import { useNavigate } from "react-router-dom";
 import { useHomeQuery } from "../Redux/Fetchslice";
+import { useDispatch, useSelector } from "react-redux";
+import { setKeyword } from "../Redux/StateSlice";
 
 export default function Navbar() {
     const [searchkey, setsearchkey] = useState('')
     const [genres, setgenres] = useState([])
     const [show, setshow] = useState("hidden")
-    const context = useContext(Animefetch)
-    const { setkeyword, keyword } = context;
+    const { keyword } = useSelector(state => state.states);
+    const dipatch = useDispatch()
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -23,7 +24,7 @@ export default function Navbar() {
 
     const fetchresult = async () => {
         if (keyword !== " ") {
-            setkeyword(searchkey)
+            dipatch(setKeyword(searchkey))
             navigate('/Search')
         }
     }

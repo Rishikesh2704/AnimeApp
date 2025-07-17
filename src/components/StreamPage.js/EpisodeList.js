@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import Animefetch from "../../Context.js/Hianimecontext.js/context"
+import { useSelector } from "react-redux";
 import { useEplistQuery } from "../../Redux/Fetchslice";
 
 export default function EpisodeList({id,epid,setcurrep}) {
-    const context = useContext(Animefetch)
-    const {infoid} = context
+    const {infoid} = useSelector(state => state.states)
     const [rangeindex, setrangeindex] = useState(0)
     const [eplist, seteplist] = useState([])
     
