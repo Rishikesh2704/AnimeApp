@@ -78,32 +78,3 @@ export default TopAnimesSection
 
 
 
-
-
-
-
-
-// return (<>
-//    <div className='CName top10' key={indx-2} >
-//          <h2>{(Homeheading(re[0]).slice(0, 1).toUpperCase() + Homeheading(re[0]).slice(1))}</h2>
-//          <select id="top10" onChange={(e) => setani(e.target.value)}>
-//             {Object.keys(re[1]).map((li,index) => (
-//                <option key ={index}>{li}</option>
-//             ))}
-//          </select>
-//    </div>
-
-
-//    <div className='Result'>
-//      <div id="today ">
-//             {Object.entries(re[1]).map((t,index) => {
-//                if (t[0] === ani) {
-//                   return (
-//                      <>
-//                         <List anime={t[1]}  key ={index} next={showmore} height={height} top10={true} />
-//                      </>
-//             )}})}
-//       </div>
-//    </div>
-// </>
-// )

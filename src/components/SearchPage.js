@@ -91,30 +91,3 @@ export default function SearchPage() {
     )
 }
 
-
-
-// Infinite Scroll //
-//    useEffect(()=>{
-//       if(document.getElementsByClassName('Home')[0]){
-//          if(name[1].split('/')[0]==="genre"|| name[1]==="Search"&&document.getElementsByClassName('Home')[0]){ document.addEventListener('scroll',function(e){
-//              if(name[1].split('/')[0]==="genre"|| name[1]==="Search"&&window.scrollY+window.innerHeight+150>=document.getElementsByClassName('Home')[0].scrollHeight){
-//                 if(name[1]==="Search"){
-//                    fetchSearchNextPage()
-//                    handleNextPage();
-//                 }
-//                 else if(name[1].split('/')[0]==="genre") {fetchNextGenrePage();}
-//                 }
-//           })}
-//       }
-//       return()=>{
-//          window.removeEventListener("scroll",function(e){
-//              if(name[1].split('/')[0]==="genre"|| name[1]==="Search"&&window.scrollY+window.innerHeight+150>=document.getElementsByClassName('Home')[0].scrollHeight){
-//                 if(name[1]==="Search"){
-//                    fetchSearchNextPage()
-//                    handleNextPage();
-//                 }
-//                 else if(name[1].split('/')[0]==="genre") {fetchNextGenrePage();}
-//                 }
-//           })
-//       }
-//    },[name[1],keyword])

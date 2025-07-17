@@ -106,30 +106,3 @@ const TrendAnimes = memo((props) => {
 })
 
 export default TrendAnimes
-
-
-/**************Infinte SlideShow******************/
-
-// const handleSlide = (e)=>{
-//     let container = trendContent.current
-//     container.style.transform = "translateX(-54rem)"
-// }
-
-
-// let trendSlideRem = 1
-//          let time =14800
-//          if(trendSlideRem) time = 40000*(trendSlideRem)       /**********Translating the Container For Slide***********/
-//          setInterval(()=>{
-//          for(let i=0;i<=9;i++){
-//            let animeElement=trendContent.current.children[i].cloneNode(true)
-//            let animeElementId = trendContent.current.children[i].attributes[1].value
-//            animeElement.addEventListener("mouseover",(e)=>handleMouseOverElement(e))
-//            animeElement.addEventListener("mouseout",(e)=>handleMouseOutElement(e))
-//            animeElement.addEventListener("click",(e)=>showinfo(animeElementId))
-//            trendContent.current.appendChild(animeElement)
-//          }
-//          trendSlideRem +=1
-//          let animation ={transform:`translateX(-${50*trendSlideRem}%)`}
-//          // let time1 = 40000*(trendSlideRem)
-//          trendContent.current.animate(animation,{duration:time,timing:"linear",fill:"none",playState:"running"})
-//          },14800*trendSlideRem)

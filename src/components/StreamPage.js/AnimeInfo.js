@@ -7,7 +7,7 @@ import { useAnimeinfoQuery } from "../../Redux/Fetchslice";
 
 export default function AnimeInfo({id}) {
     const context = useContext(Animefetch);
-    const {setkeyword,Source,setinfoid} = context;
+    const {setkeyword,setinfoid} = context;
     const [aniinfo, setaniinfo] = useState(null);
     const [seasons ,setseasons] = useState(null)
     const navigate = useNavigate();

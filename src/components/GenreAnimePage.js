@@ -23,16 +23,6 @@ export default function GenreAnimePage() {
 
     // FETCHING GENRE ANIMES//
     const {data, isLoading,fetchNextPage} = useGenreAnimeInfiniteQuery({currgen})
-    // const { data: Genreli, isLoading: Genreloading, error: Genreerror, fetchNextPage: fetchNextGenrePage } = useInfiniteQuery({
-    //     queryKey: ['Genre', currgen],
-    //     queryFn: (pageParam) => Animegenrelist(currgen, pageParam), enabled: !!currgen,
-    //     initialPageParam: 1,
-    //     getNextPageParam: (lastpage) => {
-    //         if (lastpage?.data?.hasNextPage) { return lastpage?.data?.currentPage + 1 }
-    //         else return undefined
-    //     },
-    // })
-
 
     // // SETTING GENRE ANIMES STATE //
     useEffect(() => {
@@ -95,51 +85,4 @@ export default function GenreAnimePage() {
 
 
 
-
-
-
-
-
-{/* <div className="Search-container" >
-
-                <div className='CName'>
-                    <h2>{currgen.slice(0, 1).toUpperCase() + currgen.slice(1)}</h2>
-                </div>
-
-                <div className='Result'>
-                    {!Genreloading
-                        ?
-                        <List anime={Genre} page={currpage} height="57rem" loading={Genreloading} />
-                        :
-                        <div className="Loading-List"></div>
-                    }
-
-                </div>
-
-            </div> */}
-
-
-
-
-
-
-//Genre pages //
-//    useEffect(()=>{
-//     if(!Genreloading&&name[1].split('/')[0]==="genre"){
-//       let fetchedGenreName = Genreli?.pages[0]?.data?.genreName
-//       let animes = Genreli?.pages.map((page)=> Object.entries(page?.data)?.filter(anime =>  anime[0]==="animes")[0][1]).flat()
-//          setGenre([...animes])
-//       }
-//       return()=>{setGenre([])}
-//    },[Genreloading,Genreli,currgen])
-
-
-//Search Pages//
-//    useEffect(()=>{
-//       if(name[1]==="Search"&&keyword.length>0&&!Searchloading){
-//       let animes = Searchre?.pages.map((page)=> Object.entries(page?.data).filter(anime =>  anime[0]==="animes")[0][1]).flat()
-//       setSearch([...animes])
-//    }
-//    return()=>{setSearch([])}
-//    },[Searchloading,Searchre,keyword])
 

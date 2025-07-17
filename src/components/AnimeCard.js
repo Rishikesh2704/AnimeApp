@@ -83,13 +83,9 @@ export default function AnimeCard(props) {
 
 
     const handleMouseOutElement = (e) => {
-        // container.style.bottom = "1rem"
-        // animeimg.style.height = "11.8rem"
-
         let animeimg = e.target.className == "img" ? e.target.children[0] : e.target.parentNode.parentNode.children[0].children[0]
         let container = e.target.className == "img" ? e.target.parentNode : e.target.parentNode.parentNode
         let img = e.target.className == "img" ? e.target : e.target.parentNode.parentNode.children[0]
-
 
         animeimg.style.transition = "0.4s ease-out"
         animeimg.style.transform = "scale(1)"
@@ -99,8 +95,6 @@ export default function AnimeCard(props) {
         img.style.setProperty('--transformcover', '1')
         img.style.setProperty('--tanslateX', "0rem")
         img.style.setProperty('--tanslateY', "0rem")
-
-
     }
 
 

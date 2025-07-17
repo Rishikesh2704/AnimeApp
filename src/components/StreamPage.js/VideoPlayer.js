@@ -68,25 +68,3 @@ export default function VideoPlayer(props) {
         </>
     )
 }
-
-
-// && url && url?.url &&
-
- // const {data:eplink ,isLoading: epLoading , error: epError} = useAnimestreamQuery({animeid:id,epid,server:currserv.server,type:currserv.type})
-  
-  // useEffect(()=>{
-
-  //   if(!epLoading){
-
-  //     if (eplink?.sources && eplink?.sources.length > 0) {
-  //       seturl(eplink?.sources[0]);
-  //       let subtitle = eplink?.tracks.find((track) => track.label === "English");
-  //       setsubtitlesrc(subtitle?.file); 
-  //       setLoading(false);
-  //     }
-    
-  //   }  
-  //   return () => {
-  //     seturl([])
-  //   }
-  // },[epid,id,eplink,currserv.server,currserv.type])
