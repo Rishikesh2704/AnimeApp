@@ -33,8 +33,8 @@ export default function AnimeInfo({id}) {
                     <div className="season" onClick={() => { dispatch(setInfoid(season.id)) 
                     navigate(`/stream/${season.id}`)
                     }}>
-                    <img className={`season-img ${aniinfo.title === season.title ? "selectedimg" : ""}`} src={season.season_poster || season.poster} />
-                    <span className={`season-tag ${aniinfo.title === season.title ? "selectedseas" : ""}`}>{season.title || season.name}</span>
+                    <img className={`season-img ${aniinfo?.title === season?.title ? "selectedimg" : ""}`} src={season?.season_poster || season?.poster} />
+                    <span className={`season-tag ${aniinfo?.title === season?.title ? "selectedseas" : ""}`}>{season?.title || season?.name}</span>
                     </div>
                 ))}
                 </div>}
@@ -54,9 +54,9 @@ export default function AnimeInfo({id}) {
                         <span onClick={() => { dispatch(setKeyword(title)); }}>{title}</span>
 
                         <div id="streamep-info">
-                            <span id="es1">{tvInfo.rating}</span>
-                            <span id="es2"><i class="fa-solid fa-closed-captioning"></i>{tvInfo.sub}</span>
-                            <span id="es3"><i class="fa-solid fa-microphone"></i>  {tvInfo.dub }</span>
+                            <span id="es1">{tvInfo?.rating}</span>
+                            <span id="es2"><i class="fa-solid fa-closed-captioning"></i>{tvInfo?.sub}</span>
+                            <span id="es3"><i class="fa-solid fa-microphone"></i>  {tvInfo?.dub }</span>
                         </div>
 
                         <div className="Egenre-info">

@@ -64,9 +64,9 @@ export default function Modal(props) {
          <div className="Modal-contentbox-main" ref={modalBox}>
             <div className="Modal-contentbox">
               
-               <Info aniinfo={aniinfo} id={id} />
+               <Info aniinfo={aniinfo} id={id} firstEp = {eplist?.episodes[0]}/>
 
-               <EpisodeList eplist={eplist} />
+               <EpisodeList eplist={eplist}  />
 
             </div> 
          </div>

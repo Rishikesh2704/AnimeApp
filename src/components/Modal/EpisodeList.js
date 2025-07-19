@@ -7,7 +7,7 @@ export default function EpisodeList({ eplist }) {
    
     const dispatch = useDispatch()
     const [rangeindex, setrangeindex] = useState(0)
-
+    
     const groupedep = (episodelist) => {
         let epgroup = []
         const range = 100;

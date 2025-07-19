@@ -4,18 +4,17 @@ import { Link } from "react-router-dom";
 import { setInfoid, setKeyword, setModalState } from "../../Redux/StateSlice";
 import { useDispatch } from "react-redux";
 
-export default function Info({aniinfo ,id}) {
+export default function Info({ aniinfo, id, firstEp }) {
     const dispatch = useDispatch()
     const [Favorite, setFavorite] = useState("regular")
     const [epid, setepid] = useState('')
-
+    const watchbtnEp = firstEp?.id
 
     const { poster, animeInfo, info, moreInfo,title } = aniinfo?.data || {}
     const { Overview, tvInfo, Genres, Status} = animeInfo || {}
     const { stats } = info || {}
     const { addFavorite, deleteFavorite, favorites } = useFavorites()
-
-
+    
 
     const handleFavorite = (e) => {
         let favAnimeObj = {
@@ -59,7 +58,7 @@ export default function Info({aniinfo ,id}) {
                     </div>
 
                     <div className="Watch-desc">
-                        <Link to={`/stream/${epid}`}><button className="Watch-btn" ><i class="fa-solid fa-play"></i>  Watch Now</button></Link>
+                        <Link to={`/stream/${watchbtnEp}`}><button className="Watch-btn" onClick={()=> dispatch(setModalState(false))} ><i class="fa-solid fa-play"></i>  Watch Now</button></Link>
                         <h4>Description</h4>
 
                         <hr />

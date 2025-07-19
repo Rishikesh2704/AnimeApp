@@ -997,6 +997,11 @@
     left: 5%;
     bottom:7rem;
   }
+
+  .Cover-Info>#ep-info>span{
+    font-weight: 500;
+    padding:0.1rem 0.4rem 0.1rem 0.4rem
+  }
   
   .Cover-Info>span{
     color:rgb(250, 247, 247);

@@ -40,8 +40,6 @@ export default function HomeSlider({ spotlightCoverAnimes }) {
   const handleModal = (spotlightId) => {
     dispatch(setInfoid(spotlightId))
     dispatch(setModalState(true));
-    // setinfoid(spotlightId)
-    // setmodalstate(true)
   }
 
   return (
@@ -76,7 +74,7 @@ export default function HomeSlider({ spotlightCoverAnimes }) {
 
                         {Object.entries(spotlight.tvInfo).map(info => {
                           if (info[0] === "episodeInfo") {
-                            return (Object.entries(info[1]).map((ep,idx) => (<span id="Cover" key={idx+1}>{ep[0].toUpperCase()}:{ep[1]}</span>)))
+                            return (Object.entries(info[1]).map((ep,idx) => (ep[1]&&<span id="Cover" key={idx+1}><i className={ep[0]==="sub"?"fa-solid fa-closed-captioning":"fa-solid fa-microphone"}/> {ep[1]}</span>)))
                           }
                         })}
                       </div>
@@ -88,7 +86,7 @@ export default function HomeSlider({ spotlightCoverAnimes }) {
               ))
             }
           </div>
-        </div>
+        </div>  
       </div>
     </>
   )
