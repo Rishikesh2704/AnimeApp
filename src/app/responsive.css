@@ -272,7 +272,7 @@
     color: var(--ElementColor);
     border: none;
     position: absolute;
-    right: 3.5rem;
+    right: 2.5rem;
     top: 0.9rem;
   }
 
@@ -299,8 +299,8 @@
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, 8rem);
-    grid-template-rows: repeat(auto-fit, 3rem);
     overflow-y: scroll;
+    row-gap:2.5rem;
   }
 
   .gen-tag {
@@ -309,6 +309,7 @@
 
   .anime-genre {
     background-color: transparent;
+    text-align:center;
   }
 
   .genre-categories {
